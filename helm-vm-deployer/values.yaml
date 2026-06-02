@@ -9,10 +9,10 @@ preference: rhel.10
 machineType: pc-q35-rhel9.6.0
 
 # Scale configuration
-vmCount: 5        # Change this number to deploy more or fewer VMs
-startSuffix: 3    # Starts at rhel-10-3
+vmCount: 7        # Change this number to deploy more or fewer VMs
+startSuffix: 1    # Starts at rhel-10-3
 
 # MAC Address configuration 
 # The template will dynamically increment the last byte
-macBase: "02:9e:b2:00:00"
+macBase: "02:9e:b2:01:00"
 macStartByte: 17  # Decimal equivalent of Hex '11' (for 02:9e:b2:00:00:11)
