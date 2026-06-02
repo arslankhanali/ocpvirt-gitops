@@ -1,0 +1,73 @@
+{{- $dot := . -}}
+{{- $count := int .Values.vmCount -}}
+{{- $startIdx := int .Values.startSuffix -}}
+{{- $startMac := int .Values.macStartByte -}}
+
+{{- range $i := until $count }}
+{{- $currentIdx := add $startIdx $i }}
+{{- $currentMacByte := add $startMac $i }}
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: {{ $dotValues := $dot.Values }}{{ $dotValues.vmBaseName }}-{{ $currentIdx }}
+  namespace: {{ $dotValues.namespace }}
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: {{ $dotValues.vmBaseName }}-{{ $currentIdx }}-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: {{ $dotValues.imageDataSource }}
+          namespace: {{ $dotValues.imageNamespace }}
+        storage:
+          resources:
+            requests:
+              storage: {{ $dotValues.storageSize }}
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: {{ $dotValues.instanceType }}
+  preference:
+    kind: virtualmachineclusterpreference
+    name: {{ $dotValues.preference }}
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "{{ $dotValues.macBase }}:{{ printf "%02x" $currentMacByte }}"
+              masquerade: {}
+              name: default
+        machine:
+          type: {{ $dotValues.machineType }}
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: {{ $dotValues.vmBaseName }}-{{ $currentIdx }}-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+{{- end }}
