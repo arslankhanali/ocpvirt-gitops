@@ -9,7 +9,7 @@ preference: rhel.10
 machineType: pc-q35-rhel9.6.0
 
 # Scale configuration
-vmCount: 7        # Change this number to deploy more or fewer VMs
+vmCount: 5        # Change this number to deploy more or fewer VMs
 startSuffix: 1    # Starts at rhel-10-3
 
 # MAC Address configuration 

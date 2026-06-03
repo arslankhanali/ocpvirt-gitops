@@ -1,0 +1,6510 @@
+NAME: my-vms
+LAST DEPLOYED: Wed Jun  3 13:31:35 2026
+NAMESPACE: part1
+STATUS: pending-install
+REVISION: 1
+DESCRIPTION: Dry run complete
+TEST SUITE: None
+HOOKS:
+MANIFEST:
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-1
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-1-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:11"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-1-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-2
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-2-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:12"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-2-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-3
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-3-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:13"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-3-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-4
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-4-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:14"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-4-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-5
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-5-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:15"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-5-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-6
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-6-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:16"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-6-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-7
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-7-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:17"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-7-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-8
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-8-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:18"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-8-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-9
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-9-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:19"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-9-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-10
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-10-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:1a"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-10-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-11
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-11-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:1b"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-11-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-12
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-12-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:1c"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-12-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-13
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-13-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:1d"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-13-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-14
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-14-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:1e"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-14-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-15
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-15-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:1f"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-15-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-16
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-16-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:20"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-16-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-17
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-17-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:21"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-17-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-18
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-18-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:22"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-18-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-19
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-19-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:23"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-19-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-20
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-20-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:24"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-20-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-21
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-21-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:25"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-21-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-22
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-22-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:26"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-22-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-23
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-23-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:27"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-23-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-24
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-24-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:28"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-24-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-25
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-25-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:29"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-25-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-26
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-26-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:2a"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-26-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-27
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-27-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:2b"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-27-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-28
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-28-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:2c"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-28-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-29
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-29-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:2d"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-29-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-30
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-30-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:2e"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-30-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-31
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-31-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:2f"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-31-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-32
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-32-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:30"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-32-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-33
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-33-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:31"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-33-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-34
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-34-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:32"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-34-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-35
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-35-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:33"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-35-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-36
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-36-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:34"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-36-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-37
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-37-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:35"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-37-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-38
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-38-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:36"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-38-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-39
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-39-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:37"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-39-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-40
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-40-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:38"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-40-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-41
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-41-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:39"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-41-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-42
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-42-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:3a"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-42-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-43
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-43-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:3b"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-43-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-44
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-44-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:3c"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-44-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-45
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-45-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:3d"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-45-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-46
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-46-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:3e"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-46-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-47
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-47-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:3f"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-47-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-48
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-48-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:40"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-48-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-49
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-49-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:41"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-49-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-50
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-50-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:42"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-50-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-51
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-51-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:43"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-51-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-52
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-52-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:44"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-52-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-53
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-53-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:45"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-53-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-54
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-54-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:46"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-54-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-55
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-55-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:47"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-55-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-56
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-56-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:48"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-56-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-57
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-57-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:49"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-57-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-58
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-58-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:4a"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-58-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-59
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-59-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:4b"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-59-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-60
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-60-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:4c"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-60-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-61
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-61-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:4d"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-61-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-62
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-62-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:4e"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-62-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-63
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-63-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:4f"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-63-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-64
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-64-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:50"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-64-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-65
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-65-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:51"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-65-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-66
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-66-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:52"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-66-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-67
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-67-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:53"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-67-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-68
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-68-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:54"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-68-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-69
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-69-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:55"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-69-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-70
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-70-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:56"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-70-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-71
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-71-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:57"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-71-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-72
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-72-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:58"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-72-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-73
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-73-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:59"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-73-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-74
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-74-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:5a"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-74-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-75
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-75-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:5b"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-75-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-76
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-76-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:5c"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-76-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-77
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-77-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:5d"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-77-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-78
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-78-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:5e"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-78-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-79
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-79-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:5f"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-79-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-80
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-80-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:60"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-80-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-81
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-81-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:61"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-81-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-82
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-82-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:62"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-82-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-83
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-83-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:63"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-83-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-84
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-84-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:64"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-84-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-85
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-85-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:65"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-85-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-86
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-86-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:66"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-86-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-87
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-87-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:67"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-87-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-88
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-88-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:68"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-88-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-89
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-89-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:69"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-89-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-90
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-90-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:6a"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-90-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-91
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-91-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:6b"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-91-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-92
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-92-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:6c"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-92-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-93
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-93-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:6d"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-93-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-94
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-94-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:6e"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-94-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-95
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-95-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:6f"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-95-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-96
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-96-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:70"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-96-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-97
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-97-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:71"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-97-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-98
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-98-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:72"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-98-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-99
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-99-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:73"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-99-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+---
+# Source: vm-deployer/templates/vm.yaml
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  name: rhel-10-100
+  namespace: part2
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: rhel-10-100-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: rhel10
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: u1.medium
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - macAddress: "02:9e:b2:01:00:74"
+              masquerade: {}
+              name: default
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: rhel-10-100-volume
+          name: rootdisk
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: qwke-w1io-3h2p
+              user: rhel
+          name: cloudinitdisk
+

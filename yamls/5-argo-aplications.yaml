@@ -2,20 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: part2
+  namespace: openshift-gitops
 spec:
   destination:
-    namespace: ''
+    namespace: part2
     server: https://kubernetes.default.svc
+  project: default
   source:
     path: argo
     repoURL: https://github.com/arslankhanali/ocpvirt-gitops
     targetRevision: HEAD
-  sources: []
-  project: default
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: false
-      selfHeal: false
-      enabled: true
